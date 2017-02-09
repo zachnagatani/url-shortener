@@ -84,7 +84,10 @@ app.get('/shorten/*', (req, res) => {
                             // Insert the url with unique id based on count
                             urls.insert(urlData, (err, data) => {
                                 if (err) return console.log(err);
-                                res.json(urlData);
+                                res.json({
+                                    original: urlData.original,
+                                    short: urlData.short
+                                });
                                 db.close();
                             });
                         });
