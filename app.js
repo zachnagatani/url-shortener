@@ -21,6 +21,11 @@ app.get('/:id', (req, res) => {
             }).toArray((err, docs) => {
                 // If not found, let 'em know!
                 if (err) {
+                    db.close();
+                    return console.log(err);
+                }
+
+                if (!docs.length) {
                     res.status(400);
                     res.end('That shortened URL doesn\'t point anywhere. Please check your URL (the part after the last "/") and try again.');
                     db.close();
