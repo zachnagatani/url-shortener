@@ -73,7 +73,7 @@ app.get('/shorten/*', (req, res) => {
                             const urlData = {
                                 _id: count,
                                 original: req.params[0],
-                                short: 'https://' + req.host + '/' + count
+                                short: 'https://' + req.hostname + '/' + count
                             };
 
                             // Insert the url with unique id based on count
